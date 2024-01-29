@@ -1,0 +1,22 @@
+services:
+  pgdatabase:
+    image: postgres:13
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=MVC_db
+    volumes:
+    # declare your mount volume /host/dir:/container/dir
+      - "/home/kazar/work/zoomcamp_2024/educ/db:/var/lib/postgresql/data:rw"
+    ports:
+      - "5432:5432"
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@admin.com
+      - PGADMIN_DEFAULT_PASSWORD=root
+    volumes:
+      # declare your mount volume /host/dir:/container/dir
+    - "/home/kazar/work/zoomcamp_2024/educ/db:/var/lib/postgresql/data:rw"
+    ports:
+      - "8080:80"
